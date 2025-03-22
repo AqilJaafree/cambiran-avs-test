@@ -172,6 +172,72 @@ The payload accepts the following parameters via environment variables:
 - Threshold Signature Program: `FGgNUqGxdEYM1gVtQT5QcTbzNv4y1UPoVvXPRnooBdxo`
 - Oracle Program: `ECb6jyKXDTE8NjVjsKgNpjSjcv4h2E7JQ42yKqWihBQE`
 
+## Tutorial
+
+Install the camb client
+```bash
+npm i --global @cambrianone/camb-client@latest
+```
+
+Scaffold AVS and initialize PoA onchain
+```bash
+camb init -t avs <AVS directory>
+```
+example:
+camb init -t avs demo-avs
+
+just enter all for the demo purpose
+Enter admin private key or press enter to generate a new one :
+- add your dev wallet private key
+Enter Cambrian Consensus Program name or press enter to generate a new one:
+create your avs name
+- avs-demo
+
+List all avs
+```bash
+camb avs list
+```
+
+Start avs:
+```bash
+camb avs run -u <AVS pubkey>
+```
+
+Build Oracle Update Container image:
+```bash
+git clone https://github.com/cambrianone/oracle-update-examples
+cd ./oracle-update-examples/current-date/container-stream
+docker build -t oracle-update-current-date .
+```
+
+Scaffolding operators
+Before scaffolding the operators make sure instance of AVS is already running.
+```bash
+camb init -t operator <operator 1 directory>
+camb init -t operator <operator 2 directory>
+camb init -t operator <operator 3 directory>
+```
+List installed operator nodes (outputs voter public keys)
+```bash
+camb operator list -a <AVS public key>
+```
+
+Start operators:
+```bash
+camb operator run -u <voter public key>
+```
+
+Build payload container image:
+```bash
+git clone https://github.com/cambrianone/payload-images
+cd ./payload-images/check-oracle
+docker build -t payload-check-oracle .
+```
+test the payload:
+```bash
+camb payload run-container -a <AVS public key> payload-check-oracle
+```
+
 ## 🧪 Testing
 
 To test the payload locally:
