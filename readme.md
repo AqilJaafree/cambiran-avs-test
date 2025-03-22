@@ -1,6 +1,6 @@
 # Cambrian Oracle Check Payload
 
-This repository contains a Solana payload implementation for Cambrian's AVS (Availability Verification Service) system. It specifically implements a check-oracle payload that verifies oracle states in the Cambrian ecosystem.
+This repository contains a Solana payload implementation for Cambrian's AVS (Actively Validated Services) system. It specifically implements a check-oracle payload that verifies oracle states in the Cambrian ecosystem.
 
 ## 🌟 Overview
 
@@ -10,7 +10,7 @@ This project demonstrates the integration between the Cambrian AVS and operators
 
 The system consists of three main components:
 
-1. **AVS (Availability Verification Service)** - The central service that coordinates proposal execution
+1. **AVS (Actively Validated Services)** - The central service that coordinates proposal execution
 2. **Operators** - Nodes that execute payloads and vote on proposals
 3. **Payload Containers** - Docker containers that generate the specific instructions to be executed on-chain
 
